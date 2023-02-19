@@ -2,6 +2,9 @@ package com.algorithm.cn.linktable;
 
 public class LinkTable {
 
+    /**
+     * 链表反转
+     * */
     public ListNode reverListNode(ListNode head){
         ListNode lastNode = null;
         while(head != null){
@@ -19,6 +22,76 @@ public class LinkTable {
         }
         return lastNode;
     }
+
+    /**
+     * 链表一定范围内反转
+     * */
+     public ListNode rangeRverseListNode(ListNode head,int left,int right){
+         if(left > right || left <= 0 ){
+             System.err.println("error");
+             return null;
+         }
+         int i=0;
+         ListNode firstNode = head;
+         ListNode leftNode = null;
+         ListNode rightNode = null;
+         ListNode lastNode = null;
+         ListNode nextNode = null;
+         while(head != null){
+             i++;
+             if(i == left){
+                 leftNode = head;
+             }
+             if(i< left){
+                 lastNode = head;
+             }
+             if(i == right){
+                 rightNode = head;
+                 nextNode = head.next;
+                 break;
+             }
+             head = head.next;
+         }
+         if(i < right){
+             System.err.println("error");
+             return null;
+         }
+         rightNode.next = null;
+         reverListNode(leftNode);
+         if(lastNode == null){
+             leftNode.next = nextNode;
+             return rightNode;
+         }
+         lastNode.next = rightNode;
+         leftNode.next = nextNode;
+         return firstNode;
+     }
+
+     /**
+      * 单项链表中倒数第K个节点
+      * 1、链表反转，求第K个需要O(n)的空间，改变了链表结构
+      * 2、遍历找出长度，再次遍历长度-K
+      * 3、转为数组，直接取值
+      * */
+     public ListNode theKth(ListNode head){
+         ListNode k = null;
+         while(head != null){
+
+         }
+         return k;
+     }
+
+     /**
+      * 从单向链表中删除指定值的节点
+      * 1、O(1)空间
+      * **/
+     public ListNode delValue(ListNode head,int value){
+         ListNode listNode = null;
+         while(head != null){
+
+         }
+         return head;
+     }
 
 
 }

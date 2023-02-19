@@ -11,7 +11,7 @@ public class Test {
     public static void testReverse(){
         ListNode head = new ListNode(1);
         ListNode temp = head;
-        for(int i = 2; i < 5; i++){
+        for(int i = 2; i < 6; i++){
             temp.next = new ListNode(i);
             temp = temp.next;
         }
@@ -22,7 +22,7 @@ public class Test {
             temp = temp.next;
         }
         System.out.println("");
-        head = linkTable.reverListNode(head);
+        head = linkTable.rangeRverseListNode(head,1,3);
         temp = head;
         while(temp != null){
             System.out.print(temp.val);
