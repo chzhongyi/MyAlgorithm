@@ -43,10 +43,47 @@ public class HuaWei {
             }
             int count = 0;
             for(int j = 0; j < 26; j++){
-                if(secretb[j] > 0 && boxb[j] != secretb[j]){
+                if(boxb[j] != secretb[j]){
                     break;
                 }
                 count++;
+            }
+            if(count == 26){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 箱子里只要串中的一部分和密码一致就可以
+     * */
+    public int boxNum2(String secret){
+        String box0 = "s";
+        String box1 = "sdf134 a2c4b";
+        String[] arr = {box0,box1};
+        byte[] secretb = new byte[26];
+        for(int k = 0; k < secret.length(); k++){
+            int c = secret.charAt(k) - 'a';
+            secretb[c]+=1;
+        }
+        for(int i = 0; i < arr.length; i++){
+            byte[] boxb = new byte[26];
+            String box = arr[i];
+            for(int j = 0; j < box.length(); j++){
+                char c = box.charAt(j);
+                if(c>='a' && c <= 'z'){
+                    boxb[(c - 'a')]+=1;
+                }
+                if(c >='A' && c <= 'Z'){
+                    boxb[(c - 'A')]+=1;
+                }
+            }
+            int count = 0;
+            for(int j = 0; j < 26; j++){
+                if(secretb[j] > 0 && boxb[j] == secretb[j]){
+                    count++;
+                }
             }
             if(count == secret.length()){
                 return i;
@@ -74,5 +111,13 @@ public class HuaWei {
 
         return midNode;
     }
+    /**
+     * 一组区间[a0,b0],[a1,b1],……，区间有可能重叠、相邻，重叠、相邻区间可以合并为更大区间。
+     * 现有一组连接器[x1,x2,x3,……](x表示最大可连接长度，即 x > gap),可用来将分离区间连接起来。
+     * 需注意，两个区间之间只能使用1个连接器。请求出使用连接器后，最少的区间数
+     * egg:
+     *    in:
+     *    out:
+     * */
 
 }
