@@ -78,6 +78,7 @@ public class LinkTable {
          while(head != null){
 
          }
+
          return k;
      }
 
@@ -89,6 +90,30 @@ public class LinkTable {
          ListNode listNode = null;
          while(head != null){
 
+         }
+         return head;
+     }
+
+     /**
+      * 两数相加
+      * */
+     public ListNode add(ListNode l1, ListNode l2){
+         ListNode head = null;
+         ListNode lastNode = null;
+         int carry=0;
+         while(l1 != null || l2 != null){
+             Integer tmp1 = l1 == null?0:l1.val;
+             Integer tmp2 = l2 == null?0:l2.val;
+            carry = (tmp1 + tmp2 + carry)/10;
+            ListNode tmp = new ListNode((tmp1 + tmp2 + carry)%10);
+            if(head == null){
+                head = tmp;
+            }else {
+                lastNode.next = tmp;
+            }
+             lastNode = tmp;
+            if(l1 != null)l1=l1.next;
+            if(l2 != null)l2 =l2.next;
          }
          return head;
      }
